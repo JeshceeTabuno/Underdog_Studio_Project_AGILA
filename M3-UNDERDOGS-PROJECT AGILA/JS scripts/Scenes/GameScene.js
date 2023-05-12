@@ -43,8 +43,7 @@ class GameScene extends Phaser.Scene{
         //platforms
         branch = this.physics.add.staticGroup();
         //upper
-        branch.create(800, 400, "plat1")
-        branch.create(400, 300, "plat2")
+        branch.create(400, 350, "plat1")
         branch.create(1000, 200, "plat2")
         branch.create(200, 200, "plat3")
        
@@ -70,36 +69,36 @@ class GameScene extends Phaser.Scene{
         grass.create(1030,620,'plat7')
 
         //player
-        player = this.physics.add.sprite(230, 400, 'eagle');
+        player = this.physics.add.sprite(230, 400,'eagle' );
         player.setBounce(0.2);
         player.setCollideWorldBounds(true);
         player.body.gravity.y = 350;
         player.setScale(.2);
-        player.setSize(400, 400);
+        player.setSize(300, 300);
         //player.body.setOffset(50, 100);
 
         //  The player animations, turning, walking left and walking right.
 
-    this.anims.create({
-        key: 'idle',
-        frames: this.anims.generateFrameNumbers('eagle', {start: 3}),
-        frameRate: 0,
-        repeat: -1
-    });
+    // this.anims.create({
+    //     key: 'idle',
+    //     frames: this.anims.generateFrameNumbers('eagle', {start: 3}),
+    //     frameRate: 0,
+    //     repeat: -1
+    // });
 
-    this.anims.create({
-        key: 'left',
-        frames: this.anims.generateFrameNumbers('eagle', {start: 0, end: 2}),
-        frameRate: 10,
-        repeat: -1
-    });
+    // this.anims.create({
+    //     key: 'left',
+    //     frames: this.anims.generateFrameNumbers('eagle', {start: 0, end: 2}),
+    //     frameRate: 10,
+    //     repeat: -1
+    // });
 
-    this.anims.create({
-        key: 'right',
-        frames: this.anims.generateFrameNumbers('eagle', {start: 4, end: 6}),
-        frameRate: 10,
-        repeat: -1
-        });
+    // this.anims.create({
+    //     key: 'right',
+    //     frames: this.anims.generateFrameNumbers('eagle', {start: 4, end: 6}),
+    //     frameRate: 10,
+    //     repeat: -1
+    //     });
 
 
 
@@ -117,17 +116,17 @@ update(){
          //Moving the sprite
  if(cursors.left.isDown){
     player.setVelocityX(-200);
-    player.anims.play('left', true);
+    // player.anims.play('left', true);
    } else if(cursors.right.isDown){
     player.setVelocityX(200);
-    player.anims.play('right', true);
+    // player.anims.play('right', true);
    } else{
     player.setVelocityX(0);
-    player.anims.play('idle', true);
+    // player.anims.play('idle', true);
    }
 
    if (cursors.up.isDown && player.body.touching.down) {
-    player.setVelocityY(-350);
+    player.setVelocityY(-400);
   }
         }
 

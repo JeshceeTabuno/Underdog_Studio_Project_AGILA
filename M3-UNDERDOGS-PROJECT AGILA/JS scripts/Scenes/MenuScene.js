@@ -18,7 +18,7 @@ class MenuScene extends Phaser.Scene{
 
     let playButton = this.add.image(640,250, 'Play').setScale(2);
     playButton.setInteractive();
-    playButton.on('pointerdown',() => {this.scene.start('GameScene2')});
+    playButton.on('pointerdown',() => {this.scene.start('GameScene')});
 
     let creditButton = this.add.image(600,500, 'Credits').setScale(1.5);
     creditButton.setInteractive();
