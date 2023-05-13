@@ -8,7 +8,21 @@ var config = {
         debug: false,
       },
     },
-    scene:[MenuScene, Instrucstion, CreditScene, GameScene, GameScene2]
+    scene:[MenuScene, Instrucstion, CreditScene, GameScene, GameScene2,GameOverScene]
   };
 
   var game = new Phaser.Game(config);
+
+  function collectSticks(){}
+  function collectFeathers(){}
+  function collectFood(){}
+  
+  function lose(player,grass){
+    this.physics.pause();
+
+    player.anims.play('idle');
+
+    this.scene.start('GameOverScene');
+
+
+  }

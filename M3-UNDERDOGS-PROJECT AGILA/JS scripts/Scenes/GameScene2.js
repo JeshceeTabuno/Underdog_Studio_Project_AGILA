@@ -10,6 +10,11 @@ class GameScene2 extends Phaser.Scene{
 
     preload(){
         this.load.image("lvl2", "Assets/Images/Backgrounds/leveltwobackground.png");
+
+        this.load.spritesheet('eagle', 'Assets/Images/Others/PHEagleFlying.png', {
+            frameWidth: 50,
+            frameHeight: 48,
+          });
     }
     create(){
         //bg
@@ -19,6 +24,8 @@ class GameScene2 extends Phaser.Scene{
         player = this.physics.add.sprite(230, 400,"");
         player.setBounce(0.2);
         player.setCollideWorldBounds(true);
+
+        
        
 
         cursors = this.input.keyboard.createCursorKeys();
@@ -28,16 +35,22 @@ class GameScene2 extends Phaser.Scene{
     update(){
         if(cursors.left.isDown){
             player.setVelocityX(-200);
+            
            } else if(cursors.right.isDown){
             player.setVelocityX(200);
+            
            } else{
             player.setVelocityX(0);
+           
            }
            if(cursors.up.isDown){
             player.setVelocityY(-200);
+           
            }else if(cursors.down.isDown){
             player.setVelocityY(200);
+            
            }else{
+           
             player.setVelocityY(0);
            }
     }

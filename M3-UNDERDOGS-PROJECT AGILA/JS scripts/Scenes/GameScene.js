@@ -19,11 +19,11 @@ class GameScene extends Phaser.Scene{
     preload(){
         this.load.image("lvl", "Assets/Images/Backgrounds/levelonebackground.png");
 
-        //player
-        this.load.spritesheet('eagle', "Assets/Images/Others/PHeagle.png",{
-            frameWidth: 512,
-            frameHeight: 512,
-    });
+    // Player
+    this.load.spritesheet('eagle', 'Assets/Images/Others/PHEagle.png', {
+        frameWidth: 50,
+        frameHeight: 48,
+      });
 
         //Platforms
         this.load.image("plat1", "Assets/Images/Others/PlatformL3.png");
@@ -43,7 +43,8 @@ class GameScene extends Phaser.Scene{
         //platforms
         branch = this.physics.add.staticGroup();
         //upper
-        branch.create(400, 350, "plat1")
+        branch.create(800, 400, "plat2")
+        branch.create(400, 300, "plat1")
         branch.create(1000, 200, "plat2")
         branch.create(200, 200, "plat3")
        
@@ -59,49 +60,44 @@ class GameScene extends Phaser.Scene{
 
         //Grass
         grass = this.physics.add.staticGroup();
-        grass.create(50,620,'plat7')
-        grass.create(150,620,'plat7')
-        grass.create(300,620,'plat7')
-        grass.create(450,620,'plat7')
-        grass.create(600,620,'plat7')
-        grass.create(750,620,'plat7')
-        grass.create(900,620,'plat7')
-        grass.create(1030,620,'plat7')
+        grass.create(50,610,'plat7')
+        grass.create(150,610,'plat7')
+        grass.create(300,610,'plat7')
+        grass.create(450,610,'plat7')
+        grass.create(600,610,'plat7')
+        grass.create(750,610,'plat7')
+        grass.create(900,610,'plat7')
+        grass.create(1030,610,'plat7')
 
         //player
-        player = this.physics.add.sprite(230, 400,'eagle' );
+        player = this.physics.add.sprite(200, 400);
         player.setBounce(0.2);
         player.setCollideWorldBounds(true);
         player.body.gravity.y = 350;
-        player.setScale(.2);
-        player.setSize(300, 300);
-        //player.body.setOffset(50, 100);
+        player.setScale(0.9);
 
-        //  The player animations, turning, walking left and walking right.
+          //The player animations, turning, walking left and walking right.
 
-    // this.anims.create({
-    //     key: 'idle',
-    //     frames: this.anims.generateFrameNumbers('eagle', {start: 3}),
-    //     frameRate: 0,
-    //     repeat: -1
-    // });
+     this.anims.create({
+         key: 'idle',
+        frames: this.anims.generateFrameNumbers('eagle', {start: 3}),
+        frameRate: 0,
+         repeat: -1
+     });
 
-    // this.anims.create({
-    //     key: 'left',
-    //     frames: this.anims.generateFrameNumbers('eagle', {start: 0, end: 2}),
-    //     frameRate: 10,
-    //     repeat: -1
-    // });
+     this.anims.create({
+         key: 'left',
+         frames: this.anims.generateFrameNumbers('eagle', {start: 0, end: 2}),
+         frameRate: 10,
+        repeat: -1
+     });
 
-    // this.anims.create({
-    //     key: 'right',
-    //     frames: this.anims.generateFrameNumbers('eagle', {start: 4, end: 6}),
-    //     frameRate: 10,
-    //     repeat: -1
-    //     });
-
-
-
+     this.anims.create({
+         key: 'right',
+         frames: this.anims.generateFrameNumbers('eagle', {start: 4, end: 6}),
+         frameRate: 10,
+        repeat: -1
+         });
 
         //  Input Events
         cursors = this.input.keyboard.createCursorKeys();
@@ -109,24 +105,27 @@ class GameScene extends Phaser.Scene{
 
         //collider
         this.physics.add.collider(player, branch);
-        this.physics.add.collider(player, mushroom);
+        this.physics.add.collider(player, mushroom)
+        
+        ;
+        this.physics.add.collider(player, grass,lose,null, this);
 
     }
 update(){
          //Moving the sprite
  if(cursors.left.isDown){
     player.setVelocityX(-200);
-    // player.anims.play('left', true);
+     player.anims.play('left', true);
    } else if(cursors.right.isDown){
     player.setVelocityX(200);
-    // player.anims.play('right', true);
+     player.anims.play('right', true);
    } else{
     player.setVelocityX(0);
-    // player.anims.play('idle', true);
+    player.anims.play('idle', true);
    }
 
    if (cursors.up.isDown && player.body.touching.down) {
-    player.setVelocityY(-400);
+     player.setVelocityY(-350);
   }
         }
 
