@@ -11,7 +11,7 @@ class GameScene2 extends Phaser.Scene{
     preload(){
         this.load.image("lvl2", "Assets/Images/Backgrounds/leveltwobackground.png");
 
-        this.load.spritesheet('eagle', 'Assets/Images/Others/PHEagleFlying.png', {
+        this.load.spritesheet('flyeagle', 'Assets/Images/Others/PHEagleFlying.png', {
             frameWidth: 206,
             frameHeight: 206,
           });
@@ -28,36 +28,36 @@ class GameScene2 extends Phaser.Scene{
 
         //player animation
         this.anims.create({
-            key: 'idle',
-            frames: this.anims.generateFrameNumbers('eagle', {start: 9}),
+            key: 'hover',
+            frames: this.anims.generateFrameNumbers('flyeagle', {start: 9}),
             frameRate: 0,
             repeat: -1
         });
     
         this.anims.create({
-            key: 'left',
-            frames: this.anims.generateFrameNumbers('eagle', {start: 4, end: 7}),
+            key: 'flyleft',
+            frames: this.anims.generateFrameNumbers('flyeagle', {start: 4, end: 7}),
             frameRate: 5,
             repeat: -1
         });
     
         this.anims.create({
-            key: 'right',
-            frames: this.anims.generateFrameNumbers('eagle', {start: 8, end: 11}),
+            key: 'flyright',
+            frames: this.anims.generateFrameNumbers('flyeagle', {start: 8, end: 11}),
             frameRate: 5,
             repeat: -1
             });
     
             this.anims.create({
                 key: 'up',
-                frames: this.anims.generateFrameNumbers('eagle', {start: 0, end: 3}),
+                frames: this.anims.generateFrameNumbers('flyeagle', {start: 0, end: 3}),
                 frameRate: 5,
                 repeat: -1
             });
             
             this.anims.create({
                 key: 'down',
-                frames: this.anims.generateFrameNumbers('eagle', {start: 12, end: 15}),
+                frames: this.anims.generateFrameNumbers('flyeagle', {start: 12, end: 15}),
                 frameRate: 5,
                 repeat: -1
             });  
@@ -72,15 +72,15 @@ class GameScene2 extends Phaser.Scene{
     update(){
         if(cursors.left.isDown){
             player.setVelocityX(-200);
-            player.anims.play('left', true);
+            player.anims.play('flyleft', true);
             
            } else if(cursors.right.isDown){
             player.setVelocityX(200);
-            player.anims.play('right', true);
+            player.anims.play('flyright', true);
             
            } else{
             player.setVelocityX(0);
-            player.anims.play('idle', true);
+            player.anims.play('hover', true);
            
            }
            if(cursors.up.isDown){
@@ -94,6 +94,7 @@ class GameScene2 extends Phaser.Scene{
            }else{
            
             player.setVelocityY(0);
+            
            }
     }
 }

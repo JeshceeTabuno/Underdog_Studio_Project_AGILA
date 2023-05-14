@@ -3,9 +3,15 @@ var player
 //Platforms
 var branch
 var mushroom
-var bush
-
 var grass
+
+
+var sticks
+var sticksCollectText
+var StickCollect=0;
+
+var timerText
+
 
 //controls
 var cursors
@@ -25,6 +31,9 @@ class GameScene extends Phaser.Scene{
         frameHeight: 48,
       });
 
+      //sticks
+      this.load.image("stick", "Assets/Images/Others/Sticks.png");
+
         //Platforms
         this.load.image("plat1", "Assets/Images/Others/PlatformL3.png");
         this.load.image("plat2", "Assets/Images/Others/PlatformL1.png");
@@ -40,11 +49,13 @@ class GameScene extends Phaser.Scene{
     create(){
         this.add.image(0, 0, 'lvl').setOrigin(0).setScrollFactor(1);
 
+        
+
         //platforms
         branch = this.physics.add.staticGroup();
         //upper
-        branch.create(800, 400, "plat2")
-        branch.create(400, 300, "plat1")
+        branch.create(800, 440, "plat2")
+        branch.create(400, 320, "plat1")
         branch.create(1000, 200, "plat2")
         branch.create(200, 200, "plat3")
        
@@ -69,12 +80,30 @@ class GameScene extends Phaser.Scene{
         grass.create(900,610,'plat7')
         grass.create(1030,610,'plat7')
 
+        //sticks
+        sticks=this.physics.add.staticGroup();
+        sticks.create(50,80,'stick').setScale(0.5)
+        sticks.create(300,80,'stick').setScale(0.5)
+
+        sticks.create(900,80,'stick').setScale(0.5)
+        sticks.create(1100,80,'stick').setScale(0.5)
+
+        sticks.create(300,250,'stick').setScale(0.5)
+        sticks.create(500,250,'stick').setScale(0.5)
+       
+        sticks.create(700,350,'stick').setScale(0.5)
+        sticks.create(900,350,'stick').setScale(0.5)
+
+        sticks.create(500,500,'stick').setScale(0.5)
+        sticks.create(1100,440,'stick').setScale(0.5)
+
+
         //player
         player = this.physics.add.sprite(200, 400);
         player.setBounce(0.2);
         player.setCollideWorldBounds(true);
         player.body.gravity.y = 350;
-        player.setScale(0.9);
+        player.setScale(1.5);
 
           //The player animations, turning, walking left and walking right.
 
@@ -102,12 +131,17 @@ class GameScene extends Phaser.Scene{
         //  Input Events
         cursors = this.input.keyboard.createCursorKeys();
 
+        sticksCollectText = this.add.text(16, 16, "Sticks Collected: 0", {
+            fontSize: "32px",
+            fill: "white",
+          });
+
 
         //collider
         this.physics.add.collider(player, branch);
-        this.physics.add.collider(player, mushroom)
-        
-        ;
+        this.physics.add.collider(player, mushroom);
+
+        this.physics.add.collider(player, sticks,collectStick,null,this);
         this.physics.add.collider(player, grass,lose,null, this);
 
     }
@@ -125,8 +159,14 @@ update(){
    }
 
    if (cursors.up.isDown && player.body.touching.down) {
-     player.setVelocityY(-350);
+     player.setVelocityY(-400);
   }
         }
+
+ collectStick(player,sticks){
+            sticks.disabledBody(true,true);
+        
+            StickCollect +=1;
+          }
 
     }

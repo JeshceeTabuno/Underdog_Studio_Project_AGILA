@@ -8,12 +8,24 @@ var config = {
         debug: false,
       },
     },
-    scene:[MenuScene, Instrucstion, CreditScene, GameScene, GameScene2,GameOverScene]
+    scene:[MenuScene, Instrucstion, CreditScene, GameScene, CutScene1 ,GameScene2,GameOverScene]
   };
 
   var game = new Phaser.Game(config);
 
-  function collectSticks(){}
+  function collectStick(player,stick){
+   stick.destroy();
+
+    StickCollect +=1;
+    sticksCollectText.setText("Score: " + StickCollect);
+
+    if (StickCollect >= 2){
+      
+      this.scene.start('CutScene1');
+    }
+
+    
+  }
   function collectFeathers(){}
   function collectFood(){}
   
