@@ -1,8 +1,8 @@
 var EndMusic;
 
-class GameOverScene extends Phaser.Scene{
+class GameOverScene2 extends Phaser.Scene{
     constructor(){
-        super('GameOverScene');
+        super('GameOverScene2');
         this.musicPlayed=false;
     }
 
@@ -15,17 +15,20 @@ class GameOverScene extends Phaser.Scene{
     }
     create(){
 
-      
-
         EndMusic = this.sound.add('EndMusic');
+            EndMusic.loop=true;
             EndMusic.play();
             EndMusic.setVolume(0.3);
 
+            this.musicPlayed=true;
 
         if( lvl1BGM && lvl1BGM.isPlaying){
             lvl1BGM.stop();
             }
 
+        if( lvl2BGM && lvl2BGM.isPlaying){
+                lvl2BGM.stop();
+                }
     
 
         this.add.image(0, 0, 'ENDBG').setOrigin(0).setScrollFactor(1);
@@ -35,7 +38,7 @@ class GameOverScene extends Phaser.Scene{
 
         let restartButton = this.add.image(600,300, 'Restart').setScale(2);
         restartButton.setInteractive();
-        restartButton.on('pointerdown',() => {this.scene.start('GameScene')});
+        restartButton.on('pointerdown',() => {this.scene.start('GameScene2')});
 
 
 

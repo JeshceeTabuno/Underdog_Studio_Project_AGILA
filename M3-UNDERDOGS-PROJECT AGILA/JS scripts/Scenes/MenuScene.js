@@ -45,6 +45,13 @@ class MenuScene extends Phaser.Scene{
         CSBGM3.stop();
     }
 
+    if(EndMusic && EndMusic.isPlaying){
+        EndMusic.stop();
+    }
+   
+
+
+
 
     //Gamescene stop music
     if(lvl1BGM && lvl1BGM.isPlaying){
