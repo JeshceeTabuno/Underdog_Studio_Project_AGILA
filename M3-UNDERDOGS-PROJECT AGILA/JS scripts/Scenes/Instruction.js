@@ -10,7 +10,9 @@ class Instrucstion extends Phaser.Scene{
         this.load.image("IB", "Assets/Images/Buttons/back.png");
     }
     create(){
-
+        if(MBGM && !MBGM.isPlaying){
+            MBGM.play();
+        }
         this.add.image(0, 0, 'IBG').setOrigin(0).setScrollFactor(1);
 
         let backButton = this.add.image(200,500, 'IB').setScale(1);

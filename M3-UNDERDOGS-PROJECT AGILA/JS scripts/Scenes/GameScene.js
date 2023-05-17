@@ -12,6 +12,9 @@ var StickCollect=0;
 
 var timerText
 
+//Music & Sounds
+var lvl1BGM;
+var chop;
 
 //controls
 var cursors
@@ -20,9 +23,15 @@ var cursors
 class GameScene extends Phaser.Scene{
     constructor(){
         super('GameScene');
+        this.musicPlayed=false;
     }
 
     preload(){
+
+    //Sounds
+    this.load.audio('lvlBGM','Assets/Sounds/Music/Soda Jungle Overworld - New Super Mario Bros U - Music.mp3');
+    this.load.audio('chop','Assets/Sounds/SFX/Tango.mp3.mp3');
+    //
         this.load.image("lvl", "Assets/Images/Backgrounds/levelonebackground.png");
 
     // Player
@@ -47,6 +56,24 @@ class GameScene extends Phaser.Scene{
         //Objects
     }
     create(){
+      //Music
+      
+        lvl1BGM = this.sound.add('lvlBGM');
+            lvl1BGM.loop=true;
+            lvl1BGM.play();
+            lvl1BGM.setVolume(0.3);
+            this.musicPlayed=true;
+        
+
+     
+
+        chop= this.sound.add('chop')
+
+        //Stoping cutscene 1 music
+        if(CSBGM && CSBGM.isPlaying){
+          CSBGM.stop();
+      }
+    
         this.add.image(0, 0, 'lvl').setOrigin(0).setScrollFactor(1);
 
         
@@ -103,7 +130,7 @@ class GameScene extends Phaser.Scene{
         player.setBounce(0.2);
         player.setCollideWorldBounds(true);
         player.body.gravity.y = 350;
-        player.setScale(1.5);
+        player.setScale(1.9);
 
           //The player animations, turning, walking left and walking right.
 

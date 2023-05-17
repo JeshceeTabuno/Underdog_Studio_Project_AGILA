@@ -18,12 +18,16 @@ var game = new Phaser.Game(config);
 function collectStick(player,stick){
  stick.destroy();
 
+ chop.play();
+ chop.setVolume(0.3);
+
   StickCollect +=1;
   sticksCollectText.setText("Stick Collected: " + StickCollect);
 
   if (StickCollect >= 2){
     
     this.scene.start('CutScene2');
+    lvl1BGM.stop();
   }
 
   
@@ -32,6 +36,8 @@ function collectStick(player,stick){
 //level 2
 
 function collectFeathers(player, feather) {
+  wind.play()
+  wind.setVolume(0.3)
   featherCollected = true;
   feather.x = Phaser.Math.Between(100, 1100);
   feather.y = Phaser.Math.Between(50, 550);
@@ -42,6 +48,7 @@ function collectFeathers(player, feather) {
 
   if(featherCollect >=2){
     this.scene.start('CutScene3');
+    lvl2BGM.stop();
   }
 }
 

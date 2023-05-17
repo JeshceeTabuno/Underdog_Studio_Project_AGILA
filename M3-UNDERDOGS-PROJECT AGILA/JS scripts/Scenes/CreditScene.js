@@ -11,6 +11,11 @@ class CreditScene extends Phaser.Scene{
     }
     create(){
 
+        if(MBGM && !MBGM.isPlaying){
+            MBGM.play();
+        }
+
+
         this.add.image(0, 0, 'CBG').setOrigin(0).setScrollFactor(1);
 
         let backButton = this.add.image(200,500, 'back').setScale(1);

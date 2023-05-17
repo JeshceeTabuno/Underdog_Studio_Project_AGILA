@@ -1,10 +1,16 @@
+var MBGM;
+
+
 class MenuScene extends Phaser.Scene{
     constructor(){
         super('MenuScene');
+        this.musicPlayed=false;
     }
 
     preload(){
-
+        //BackGround Music
+    this.load.audio('MBGM','Assets/Sounds/Music/Pokémon Sun & Moon - Welcome to the Alola Region Music (HQ).mp3');
+        //BG
     this.load.image("MBG", "Assets/Images/Backgrounds/levelonebackground.png");
     
     this.load.image("Play", "Assets/Images/Buttons/play.png");
@@ -13,10 +19,43 @@ class MenuScene extends Phaser.Scene{
     this.load.image("help", "Assets/Images/Buttons/help.png");
     }
     create(){
+    if(!this.musicPlayed){
+    MBGM = this.sound.add('MBGM');
+        MBGM.loop=true;
+        MBGM.play();
+        MBGM.setVolume(0.3);
+        this.musicPlayed=true;
+    }
+
+    if(MBGM && !MBGM.isPlaying){
+        MBGM.play();
+    }
+
+    //cutScenes
+    if(CSBGM && CSBGM.isPlaying){
+        CSBGM.stop();
+    }
+
+     
+     if(CSBGM2 && CSBGM2.isPlaying){
+        CSBGM2.stop();
+    }
+
+    if(CSBGM3 && CSBGM3.isPlaying){
+        CSBGM3.stop();
+    }
+
+
+    //Gamescene stop music
+    if(lvl1BGM && lvl1BGM.isPlaying){
+        lvl1BGM.stop();
+    }
+
+
 
     this.add.image(0, 0, 'MBG').setOrigin(0).setScrollFactor(1);
 
-    let playButton = this.add.image(640,250, 'Play').setScale(2);
+    let playButton = this.add.image(630,250, 'Play').setScale(2);
     playButton.setInteractive();
     playButton.on('pointerdown',() => {this.scene.start('CutScene1')});
 

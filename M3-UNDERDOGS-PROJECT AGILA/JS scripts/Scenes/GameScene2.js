@@ -7,7 +7,11 @@ var featherCollected = false;
 
 var featherCollect = 0;
 
+//sounds
+var lvl2BGM;
+var wind;
 
+//controls
 var cursors;
 
 
@@ -17,6 +21,10 @@ class GameScene2 extends Phaser.Scene{
     }
 
     preload(){
+        //sounds
+        this.load.audio('lvl2BGM','Assets/Sounds/Music/Secret Base (Pokémon Omega Ruby & Alpha Sapphire OST).mp3');
+    this.load.audio('wind','Assets/Sounds/SFX/Moon_Shard.mp3.mp3');
+
         this.load.image("lvl2", "Assets/Images/Backgrounds/leveltwobackground.png");
 
         this.load.spritesheet('flyeagle', 'Assets/Images/Others/PHEagleFlying.png', {
@@ -27,6 +35,21 @@ class GameScene2 extends Phaser.Scene{
         
     }
     create(){
+        //music
+         //Stoping cutscene 2 music
+         if(CSBGM2 && CSBGM2.isPlaying){
+            CSBGM2.stop();
+        }
+
+        lvl2BGM = this.sound.add('lvl2BGM');
+        lvl2BGM.loop=true;
+        lvl2BGM.play();
+        lvl2BGM.setVolume(0.3);
+        this.musicPlayed=true;
+
+        wind=this.sound.add('wind')
+    
+
         //bg
         this.add.image(0, 0, 'lvl2').setOrigin(0).setScrollFactor(1);
 
