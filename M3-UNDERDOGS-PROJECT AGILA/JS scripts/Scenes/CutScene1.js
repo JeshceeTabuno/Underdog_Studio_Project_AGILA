@@ -15,7 +15,7 @@ class CutScene1 extends Phaser.Scene{
 
         let continueButton = this.add.image(1000,500, 'CSC1').setScale(1);
         continueButton.setInteractive();
-        continueButton.on('pointerdown',() => {this.scene.start('GameScene2')});
+        continueButton.on('pointerdown',() => {this.scene.start('GameScene')});
 
         let backButton = this.add.image(200,500, 'CSB1').setScale(1);
         backButton.setInteractive();

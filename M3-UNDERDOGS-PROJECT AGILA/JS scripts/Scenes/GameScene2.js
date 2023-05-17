@@ -1,4 +1,12 @@
 var player;
+var feather;
+
+var featherText;
+
+var featherCollected = false;
+
+var featherCollect = 0;
+
 
 var cursors;
 
@@ -15,6 +23,8 @@ class GameScene2 extends Phaser.Scene{
             frameWidth: 206,
             frameHeight: 206,
           });
+        this.load.image("feather", "Assets/Images/Others/Feathers.png");
+        
     }
     create(){
         //bg
@@ -62,11 +72,22 @@ class GameScene2 extends Phaser.Scene{
                 repeat: -1
             });  
 
-        
-       
 
+            featherText = this.add.text(16, 16, "Feathers: 0", {
+                fontSize: "32px",
+                fill: "white",
+              });
+    
+
+        
+
+        //Feathers
+        feather = this.physics.add.sprite(Phaser.Math.Between(100, 1100), Phaser.Math.Between(50, 550), 'feather').setScale(0.5);
+        
         cursors = this.input.keyboard.createCursorKeys();
 
+        //Physics
+        this.physics.add.overlap(player,feather,collectFeathers,null,this)
 
     }
     update(){
@@ -94,7 +115,28 @@ class GameScene2 extends Phaser.Scene{
            }else{
            
             player.setVelocityY(0);
-            
+        
            }
+
+           if(featherCollected){
+            feather.x = getRandomX();
+            feather.y = getRandomY();
+            featherCollected = false;
+           }
+
+if (player.x < 0) {
+    player.x = 0;
+}
+if (player.x > this.game.config.width) {
+    player.x = this.game.config.width;
+}
+if (player.y < 0) {
+    player.y = 0;
+}
+if (player.y > this.game.config.height) {
+    player.y = this.game.config.height;
+}
+
+           
     }
 }
