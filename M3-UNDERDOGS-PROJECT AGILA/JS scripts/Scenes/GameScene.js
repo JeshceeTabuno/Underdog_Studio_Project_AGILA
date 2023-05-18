@@ -10,6 +10,7 @@ var sticks
 var sticksCollectText
 var StickCollect=0;
 
+var timer
 var timerText
 
 //Music & Sounds
@@ -74,9 +75,16 @@ class GameScene extends Phaser.Scene{
           CSBGM.stop();
       }
     
-        this.add.image(0, 0, 'lvl').setOrigin(0).setScrollFactor(1);
+      this.add.image(0, 0, 'lvl').setOrigin(0).setScrollFactor(1);
 
-        
+  // Timer
+  timer = this.time.addEvent({
+    delay: 10000,
+    callback: this.onTimerComplete,
+    callbackScope: this
+  });
+  timerText = this.add.text(500, 20, 'Time: ', { font: '32px Arial', fill: 'White' });
+     
 
         //platforms
         branch = this.physics.add.staticGroup();
@@ -123,7 +131,8 @@ class GameScene extends Phaser.Scene{
 
         sticks.create(500,500,'stick').setScale(0.5)
         sticks.create(1100,440,'stick').setScale(0.5)
-
+      //Timer
+      
 
         //player
         player = this.physics.add.sprite(200, 400);
@@ -155,11 +164,12 @@ class GameScene extends Phaser.Scene{
         repeat: -1
          });
 
+
         //  Input Events
         cursors = this.input.keyboard.createCursorKeys();
 
         sticksCollectText = this.add.text(16, 16, "Sticks Collected: 0", {
-            fontSize: "32px",
+            font: "32px Arial",
             fill: "white",
           });
 
@@ -187,7 +197,13 @@ update(){
 
    if (cursors.up.isDown && player.body.touching.down) {
      player.setVelocityY(-400);
-  }
+
+    
+   }
+
+   var remainingTime = Math.ceil((timer.delay - timer.getElapsed())/1000);
+   timerText.setText('Time: '+ remainingTime);
+ 
         }
 
  collectStick(player,sticks){
@@ -195,5 +211,10 @@ update(){
         
             StickCollect +=1;
           }
+
+    onTimerComplete(){
+      timerText.setText('Time: 0');
+      this.scene.start('GameOverScene');
+    }
 
     }

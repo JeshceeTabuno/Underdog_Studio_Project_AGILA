@@ -8,7 +8,7 @@ var config = {
       debug: false,
     },
   },
-  scene:[MenuScene, Instrucstion, CreditScene, GameScene, GameScene2, CutScene1 , CutScene2, CutScene3,GameOverScene]
+  scene:[MenuScene, Instrucstion, CreditScene, GameScene, GameScene2, CutScene1 , CutScene2, CutScene3,GameOverScene,GameOverScene2]
 };
 
 var game = new Phaser.Game(config);
@@ -48,7 +48,7 @@ function collectFeathers(player, feather) {
 
   if(featherCollect >=2){
     this.scene.start('CutScene3');
-    lvl2BGM.stop();
+    this.lvl2BGM.stop();
   }
 }
 
@@ -75,7 +75,7 @@ function collectFood(){}
 
 
 
-
+//Lose functions
 
 function lose(player,grass){
   this.physics.pause();
@@ -86,3 +86,4 @@ function lose(player,grass){
 
 
 }
+

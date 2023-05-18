@@ -1,4 +1,4 @@
-var EndMusic;
+var EndMusic2;
 
 class GameOverScene2 extends Phaser.Scene{
     constructor(){
@@ -7,24 +7,21 @@ class GameOverScene2 extends Phaser.Scene{
     }
 
     preload(){
-        this.load.audio('EndMusic','Assets/Sounds/Music/Game Over - Pokémon Legends_ Arceus (Gamerip).wav');
+        this.load.audio('EndMusic2','Assets/Sounds/Music/Game Over - Pokémon Legends_ Arceus (Gamerip).wav');
 
         this.load.image("ENDBG", "Assets/Images/Backgrounds/levelonebackground.png");
         this.load.image("OverB", "Assets/Images/Buttons/back.png");
         this.load.image("Restart", "Assets/Images/Buttons/replay.png");
     }
     create(){
+        if(!this.musicPlayed){
+        EndMusic2 = this.sound.add('EndMusic2');
+            EndMusic2.loop=true;
+            EndMusic2.play();
+            EndMusic2.setVolume(0.3);
 
-        EndMusic = this.sound.add('EndMusic');
-            EndMusic.loop=true;
-            EndMusic.play();
-            EndMusic.setVolume(0.3);
+            this.musicPlayed=true;}
 
-            this.musicPlayed=true;
-
-        if( lvl1BGM && lvl1BGM.isPlaying){
-            lvl1BGM.stop();
-            }
 
         if( lvl2BGM && lvl2BGM.isPlaying){
                 lvl2BGM.stop();
