@@ -8,7 +8,7 @@ var config = {
       debug: false,
     },
   },
-  scene:[MenuScene, Instrucstion, CreditScene, GameScene, GameScene2, CutScene1 , CutScene2, CutScene3,GameOverScene,GameOverScene2]
+  scene:[MenuScene, Instrucstion, CreditScene, GameScene, GameScene2, CutScene1 , CutScene2, CutScene3,GameSceneFinal,GameOverScene,GameOverScene2,VictoryScene]
 };
 
 var game = new Phaser.Game(config);
@@ -69,12 +69,6 @@ function getRandomY() {
 
 
 
-
-//Level 3
-function collectFood(){}
-
-
-
 //Lose functions
 
 function lose(player,grass){
@@ -86,4 +80,3 @@ function lose(player,grass){
 
 
 }
-
