@@ -79,7 +79,7 @@ class GameScene extends Phaser.Scene{
 
   // Timer
   timer = this.time.addEvent({
-    delay: 10000,
+    delay: 30000,
     callback: this.onTimerComplete,
     callbackScope: this
   });

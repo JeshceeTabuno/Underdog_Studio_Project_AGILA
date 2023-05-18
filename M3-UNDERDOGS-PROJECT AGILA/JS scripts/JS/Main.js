@@ -8,7 +8,9 @@ var config = {
       debug: false,
     },
   },
-  scene:[MenuScene, Instrucstion, CreditScene, GameScene, GameScene2, CutScene1 , CutScene2, CutScene3,GameSceneFinal,GameOverScene,GameOverScene2,VictoryScene]
+  scene:[MenuScene, Instrucstion, CreditScene, GameScene, GameScene2,GameSceneFinal,
+     CutScene1 , CutScene2, CutScene3,
+     GameOverScene,GameOverScene2,GameOverScene3,VictoryScene]
 };
 
 var game = new Phaser.Game(config);
@@ -24,7 +26,7 @@ function collectStick(player,stick){
   StickCollect +=1;
   sticksCollectText.setText("Stick Collected: " + StickCollect);
 
-  if (StickCollect >= 2){
+  if (StickCollect >= 10){
     
     this.scene.start('CutScene2');
     lvl1BGM.stop();
@@ -46,7 +48,7 @@ function collectFeathers(player, feather) {
   featherCollect +=1;
   featherText.setText("Feathers: "+featherCollect);
 
-  if(featherCollect >=2){
+  if(featherCollect >=15){
     this.scene.start('CutScene3');
     this.lvl2BGM.stop();
   }
@@ -77,6 +79,16 @@ function lose(player,grass){
   player.anims.play('idle');
 
   this.scene.start('GameOverScene');
+
+
+}
+
+function fall(player,cloud){
+  this.physics.pause();
+
+  player.anims.play('idle');
+
+  this.scene.start('GameOverScene3');
 
 
 }

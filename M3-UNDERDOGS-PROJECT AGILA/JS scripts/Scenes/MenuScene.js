@@ -45,6 +45,10 @@ class MenuScene extends Phaser.Scene{
         CSBGM3.stop();
     }
 
+    if(VSBGM && VSBGM.isPlaying){
+        VSBGM.stop();
+    }
+
     //gameover stop music
 
     if(EndMusic && EndMusic.isPlaying){
@@ -53,6 +57,10 @@ class MenuScene extends Phaser.Scene{
     
     if(EndMusic2 && EndMusic2.isPlaying){
         EndMusic2.stop();
+    }
+   
+    if(EndMusic3 && EndMusic3.isPlaying){
+        EndMusic3.stop();
     }
    
 
