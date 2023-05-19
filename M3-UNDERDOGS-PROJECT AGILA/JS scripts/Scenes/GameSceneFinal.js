@@ -61,6 +61,10 @@ class GameSceneFinal extends Phaser.Scene {
     if(CSBGM3 && CSBGM3.isPlaying){
         CSBGM3.stop();   
 }
+    if(EndMusic3 && EndMusic3.isPlaying){
+    this.EndMusic3.stop();
+}
+
 
     //Music
     this.lvl3BGM = this.sound.add('lvl3BGM');
@@ -117,7 +121,7 @@ class GameSceneFinal extends Phaser.Scene {
 
         // 2-minute countdown timer
         let timer = this.time.addEvent({
-            delay: 12000, // 2 minutes in milliseconds
+            delay: 120000, // 2 minutes in milliseconds
             callback: this.onTimerComplete,
             callbackScope: this,
             loop: false

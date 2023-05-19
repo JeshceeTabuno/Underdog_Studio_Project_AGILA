@@ -45,6 +45,9 @@ class GameScene2 extends Phaser.Scene{
          if(CSBGM2 && CSBGM2.isPlaying){
             CSBGM2.stop();
         }
+        if(EndMusic2 && EndMusic2.isPlaying){
+            EndMusic2.stop();
+        }
 
         this.lvl2BGM = this.sound.add('lvl2BGM');
         this.lvl2BGM.loop=true;

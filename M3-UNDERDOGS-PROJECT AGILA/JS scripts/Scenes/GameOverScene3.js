@@ -24,7 +24,7 @@ class GameOverScene3 extends Phaser.Scene{
 
 
         if( lvl3BGM && lvl3BGM.isPlaying){
-                lvl3BGM.stop();
+                this.lvl3BGM.stop();
              }
     
 

@@ -74,6 +74,10 @@ class GameScene extends Phaser.Scene{
         if(CSBGM && CSBGM.isPlaying){
           CSBGM.stop();
       }
+
+      if(EndMusic && EndMusic.isPlaying){
+        EndMusic.stop();
+    }
     
       this.add.image(0, 0, 'lvl').setOrigin(0).setScrollFactor(1);
 
