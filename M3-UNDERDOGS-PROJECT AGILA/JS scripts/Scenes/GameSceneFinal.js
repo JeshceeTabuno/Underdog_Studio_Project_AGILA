@@ -179,7 +179,7 @@ class GameSceneFinal extends Phaser.Scene {
         //foods
         foodsStack = this.physics.add.group({
             key: 'food',
-            repeat: 14,
+            repeat: 16,
             setXY: { x: 12, y: 0, stepX: 70 }
         });
 
@@ -250,7 +250,7 @@ function collectFood(player3, foods) {
     FoodCollect += 1;
     FoodscoreText.setText("Food Collected: " + FoodCollect);
 
-    if(FoodCollect == 10) {
+    if(FoodCollect == 30) {
         this.lvl3BGM.stop();
         victory = true;
     }
