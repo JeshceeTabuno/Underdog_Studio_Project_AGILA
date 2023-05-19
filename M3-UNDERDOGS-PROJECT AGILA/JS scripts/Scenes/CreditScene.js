@@ -13,6 +13,7 @@ class CreditScene extends Phaser.Scene{
         this.load.image('Debbi','Assets/Images/Others/Debbi.png')
         this.load.image('Abaya','Assets/Images/Others/Mark Abaya.png')
         this.load.image('Eugene','Assets/Images/Others/Eugene.png')
+        this.load.image('UnderDog','Assets/Images/Others/UnderDog Studio.png')
     }
     create(){
 
@@ -65,6 +66,10 @@ class CreditScene extends Phaser.Scene{
         let FloresText2 = this.add.text(850,220,'(Video Editor)',{font: '25px Arial', fill:'White' })
             FloresText2.setInteractive({userHandCursor:true});
 
+
+
+        let underDogButton = this.add.image(600,450,'UnderDog').setScale(1)
+            underDogButton.setInteractive();
 
 
 

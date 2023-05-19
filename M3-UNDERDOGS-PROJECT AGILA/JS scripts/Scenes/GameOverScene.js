@@ -4,6 +4,7 @@ class GameOverScene extends Phaser.Scene{
     constructor(){
         super('GameOverScene');
         this.musicPlayed=false;
+
     }
 
     preload(){

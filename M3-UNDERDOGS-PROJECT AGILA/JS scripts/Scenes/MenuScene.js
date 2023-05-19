@@ -17,6 +17,8 @@ class MenuScene extends Phaser.Scene{
     this.load.image("Credits", "Assets/Images/Buttons/credits.png");
     this.load.image("Exit", "Assets/Images/Buttons/quit.png");
     this.load.image("help", "Assets/Images/Buttons/help.png");
+
+    this.load.image('AgilaLogo','Assets/Images/Others/Agila.png')
     }
     create(){
     if(!this.musicPlayed){
@@ -76,11 +78,14 @@ class MenuScene extends Phaser.Scene{
 
     this.add.image(0, 0, 'MBG').setOrigin(0).setScrollFactor(1);
 
-    let playButton = this.add.image(630,250, 'Play').setScale(2);
+    let logoAgila = this.add.image(620,150,'AgilaLogo').setScale(1);
+        logoAgila.setInteractive();
+
+    let playButton = this.add.image(620,300, 'Play').setScale(1.5);
     playButton.setInteractive();
     playButton.on('pointerdown',() => {this.scene.start('CutScene1')});
 
-    let creditButton = this.add.image(600,500, 'Credits').setScale(1.5);
+    let creditButton = this.add.image(620,530, 'Credits').setScale(1.5);
     creditButton.setInteractive();
     creditButton.on('pointerdown',() => {this.scene.start('CreditScene')});
     

@@ -147,6 +147,8 @@ class GameScene extends Phaser.Scene{
         player.setCollideWorldBounds(true);
         player.body.gravity.y = 350;
         player.setScale(1.9);
+        player.body.setSize(30, 20); // Set the size of the hitbox
+        player.body.setOffset(10, 30); // Set the offset of the hitbox
         
 
           //The player animations, turning, walking left and walking right.

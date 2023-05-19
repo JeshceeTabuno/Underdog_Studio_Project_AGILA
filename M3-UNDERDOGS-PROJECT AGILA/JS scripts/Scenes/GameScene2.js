@@ -131,7 +131,7 @@ this.cameras.main.startFollow(player);
 
         //Feathers
         feather = this.physics.add.sprite(Phaser.Math.Between(100, 1100), Phaser.Math.Between(50, 550), 'feather').setScale(0.5).setScrollFactor(1);
-        
+        featherCollect=0;
         featherText = this.add.text(16, 16, 'Feathers: 0', {
             fontSize: '20px',
             fill: 'white',
@@ -215,6 +215,8 @@ timerText.setText('Time: '+ remainingTime);
         this.lvl2BGM.stop();
         timerText.setText('Time: 0');
         this.scene.start('GameOverScene2');
+
+        featherCollect=0;
       }
 
 }

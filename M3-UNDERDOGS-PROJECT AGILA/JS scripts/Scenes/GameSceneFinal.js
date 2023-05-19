@@ -84,8 +84,8 @@ class GameSceneFinal extends Phaser.Scene {
         branch = this.physics.add.staticGroup();
         //upper
         branch.create(800, 400, "platT2")
-        branch.create(350, 200, "platT1")
-        branch.create(1000, 250, "platT2")
+        branch.create(340, 230, "platT1")
+        branch.create(1100, 250, "platT2")
         
 
         //mid
@@ -95,7 +95,7 @@ class GameSceneFinal extends Phaser.Scene {
 
         //mushroom
         mushroom = this.physics.add.staticGroup();
-        mushroom.create(1150, 550, 'platT2').setScale(1).refreshBody();
+        mushroom.create(1160, 550, 'platT2').setScale(1).refreshBody();
         mushroom.create(550, 500, 'platT2').setScale(1).refreshBody();
 
         //Grass
@@ -110,11 +110,13 @@ class GameSceneFinal extends Phaser.Scene {
         cloud.create(1030, 610, 'plat7')
 
         //player
-        player3 = this.physics.add.sprite(900, 400);
+        player3 = this.physics.add.sprite(940, 400);
         player3.setBounce(0.2);
         player3.setCollideWorldBounds(true);
         player3.body.gravity.y = 350;
         player3.setScale(1.9);
+        player3.body.setSize(30, 20); // Set the size of the hitbox
+        player3.body.setOffset(10, 30); // Set the offset of the hitbox
       
 
 
