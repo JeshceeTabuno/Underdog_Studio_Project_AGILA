@@ -107,7 +107,7 @@ class GameSceneFinal extends Phaser.Scene {
         cloud.create(1030, 610, 'plat7')
 
         //player
-        player3 = this.physics.add.sprite(200, 400);
+        player3 = this.physics.add.sprite(900, 400);
         player3.setBounce(0.2);
         player3.setCollideWorldBounds(true);
         player3.body.gravity.y = 350;
