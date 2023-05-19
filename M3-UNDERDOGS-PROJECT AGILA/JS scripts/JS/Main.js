@@ -85,7 +85,7 @@ function lose(player,grass){
 
 function fall(player,cloud){
   this.physics.pause();
-
+  this.lvl3BGM.stop()
   player.anims.play('idle');
 
   this.scene.start('GameOverScene3');

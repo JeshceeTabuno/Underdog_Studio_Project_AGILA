@@ -14,19 +14,21 @@ class GameOverScene3 extends Phaser.Scene{
         this.load.image("Restart", "Assets/Images/Buttons/replay.png");
     }
     create(){
-        if(!this.musicPlayed){
+       
         EndMusic3 = this.sound.add('EndMusic3');
-            EndMusic3.loop=true;
+            EndMusic3.loop=false;
             EndMusic3.play();
             EndMusic3.setVolume(0.3);
 
-            this.musicPlayed=true;}
+            
 
-
-        if( lvl3BGM && lvl3BGM.isPlaying){
+        
+            if(lvl3BGM&& lvl3BGM.isPlaying){
                 this.lvl3BGM.stop();
-             }
-    
+            }
+        
+
+        
 
         this.add.image(0, 0, 'ENDBG').setOrigin(0).setScrollFactor(1);
 

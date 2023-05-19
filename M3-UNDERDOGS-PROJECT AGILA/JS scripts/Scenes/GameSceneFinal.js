@@ -23,6 +23,7 @@ var cursors
 class GameSceneFinal extends Phaser.Scene {
     constructor() {
         super('GameSceneFinal');
+        this.musicPlayed=false;
     }
 
     preload() {
@@ -61,17 +62,17 @@ class GameSceneFinal extends Phaser.Scene {
     if(CSBGM3 && CSBGM3.isPlaying){
         CSBGM3.stop();   
 }
-    if(EndMusic3 && EndMusic3.isPlaying){
-    this.EndMusic3.stop();
-}
+
+
+    this.lvl3BGM = this.sound.add('lvl3BGM');
+    this.lvl3BGM.loop=true;
+    this.lvl3BGM.play();
+    this.lvl3BGM.setVolume(0.3);
+    
 
 
     //Music
-    this.lvl3BGM = this.sound.add('lvl3BGM');
-        this.lvl3BGM.loop=true;
-        this.lvl3BGM.play();
-        this.lvl3BGM.setVolume(0.3);
-        this.musicPlayed=true;
+   
 
         munch=this.sound.add('Munch')
 
@@ -92,7 +93,7 @@ class GameSceneFinal extends Phaser.Scene {
 
         //mushroom
         mushroom = this.physics.add.staticGroup();
-        mushroom.create(1100, 550, 'platT2').setScale(1).refreshBody();
+        mushroom.create(1150, 550, 'platT2').setScale(1).refreshBody();
         mushroom.create(550, 500, 'platT2').setScale(1).refreshBody();
 
         //Grass
@@ -217,7 +218,7 @@ class GameSceneFinal extends Phaser.Scene {
 
         }
         if (gameover) {
-
+            this.lvl3BGM.stop();
             this.scene.start('GameOverScene3');
         }
         forest.tilePositionY -= 4;
