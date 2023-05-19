@@ -84,7 +84,7 @@ class GameSceneFinal extends Phaser.Scene {
         branch = this.physics.add.staticGroup();
         //upper
         branch.create(800, 400, "platT2")
-        branch.create(400, 300, "platT1")
+        branch.create(350, 200, "platT1")
         branch.create(1000, 250, "platT2")
         
 
