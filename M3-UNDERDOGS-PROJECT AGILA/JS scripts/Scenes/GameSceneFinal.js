@@ -24,6 +24,7 @@ class GameSceneFinal extends Phaser.Scene {
     constructor() {
         super('GameSceneFinal');
         this.musicPlayed=false;
+        victory=false;
     }
 
     preload() {
@@ -58,6 +59,7 @@ class GameSceneFinal extends Phaser.Scene {
         //Objects
     }
     create() {
+        victory=false;
           //Stoping cutscene 2 music
     if(CSBGM3 && CSBGM3.isPlaying){
         CSBGM3.stop();   
@@ -113,6 +115,7 @@ class GameSceneFinal extends Phaser.Scene {
         player3.setCollideWorldBounds(true);
         player3.body.gravity.y = 350;
         player3.setScale(1.9);
+      
 
 
         //The player animations, turning, walking left and walking right.
@@ -191,6 +194,7 @@ class GameSceneFinal extends Phaser.Scene {
             child.setScale(0.07);
 
         });
+        FoodCollect=0;
 
 
 
@@ -210,14 +214,17 @@ class GameSceneFinal extends Phaser.Scene {
     }
     onTimerComplete() {
         gameover = true;
+        FoodCollect=0;
     }
 
     update() {
         if (victory) {
+            
             this.scene.start('VictoryScene');
 
         }
         if (gameover) {
+            
             this.lvl3BGM.stop();
             this.scene.start('GameOverScene3');
         }
@@ -241,30 +248,31 @@ class GameSceneFinal extends Phaser.Scene {
     }
 
 }
-function collectFood(player3, foods) {
+// function collectFood(player3, foods) {
 
-    foods.disableBody(true, true);
+//     foods.disableBody(true, true);
 
-    munch.play();
-    munch.setVolume(0.3);
+//     munch.play();
+//     munch.setVolume(0.3);
 
-    FoodCollect += 1;
-    FoodscoreText.setText("Food Collected: " + FoodCollect);
+//     FoodCollect += 1;
+//     FoodscoreText.setText("Food Collected: " + FoodCollect);
 
-    if(FoodCollect == 30) {
-        this.lvl3BGM.stop();
-        victory = true;
-    }
+//     if(FoodCollect >= 2) {
+//         FoodCollect=0;
+//         this.lvl3BGM.stop();
+//         victory = true;
+//     }
 
-    if (foodsStack.countActive(true) === 0) {
-        // All stars have been collected, create a new batch
-        foodsStack.children.iterate(function (child) {
-            child.enableBody(true, child.x, 0, true, true);
-            child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
-            child.body.gravity.y = 300;
-        });
-    }
+//     if (foodsStack.countActive(true) === 0) {
+//         // All stars have been collected, create a new batch
+//         foodsStack.children.iterate(function (child) {
+//             child.enableBody(true, child.x, 0, true, true);
+//             child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+//             child.body.gravity.y = 300;
+//         });
+//     }
 
-}
+// }
 
  

@@ -25,6 +25,7 @@ class GameScene extends Phaser.Scene{
     constructor(){
         super('GameScene');
         this.musicPlayed=false;
+      
     }
 
     preload(){
@@ -135,6 +136,8 @@ class GameScene extends Phaser.Scene{
 
         sticks.create(500,500,'stick').setScale(0.5)
         sticks.create(1100,440,'stick').setScale(0.5)
+
+        StickCollect = 0;
       //Timer
       
 
@@ -144,6 +147,7 @@ class GameScene extends Phaser.Scene{
         player.setCollideWorldBounds(true);
         player.body.gravity.y = 350;
         player.setScale(1.9);
+        
 
           //The player animations, turning, walking left and walking right.
 
@@ -219,6 +223,7 @@ update(){
     onTimerComplete(){
       timerText.setText('Time: 0');
       this.scene.start('GameOverScene');
+      StickCollect = 0; 
     }
 
     }
