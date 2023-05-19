@@ -26,7 +26,7 @@ function collectStick(player,stick){
   StickCollect +=1;
   sticksCollectText.setText("Stick Collected: " + StickCollect);
 
-  if (StickCollect >= 2){
+  if (StickCollect >= 10){
     
     this.scene.start('CutScene2');
     lvl1BGM.stop();
@@ -48,7 +48,7 @@ function collectFeathers(player, feather) {
   featherCollect +=1;
   featherText.setText("Feathers: "+featherCollect);
 
-  if(featherCollect >=2){
+  if(featherCollect >=15){
     featherCollect=0;
     this.scene.start('CutScene3');
     this.lvl2BGM.stop();
@@ -80,7 +80,7 @@ function collectFood(player3, foods) {
   FoodCollect += 1;
   FoodscoreText.setText("Food Collected: " + FoodCollect);
 
-  if(FoodCollect >= 2) {
+  if(FoodCollect >= 30) {
       FoodCollect=0;
       this.lvl3BGM.stop();
       victory = true;
